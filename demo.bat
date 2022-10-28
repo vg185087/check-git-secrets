@@ -1,4 +1,5 @@
-echo $SOMEPASS
+echo ${env.SOMEPASS}
+echo ${env.TEST}
 echo %2
 echo %1
 set var=$SOMEPASS
