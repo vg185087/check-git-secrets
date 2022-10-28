@@ -7,7 +7,7 @@ jobs:
     environment: CertificatePass
     env:
       CERTIFICATE_PASS: ${{ secrets.PASSWORD }}
-      TEST: 'abc'
+      TEST: "abc"
       SOMEPASS: ${{secrets.PASS}}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
