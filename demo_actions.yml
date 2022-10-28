@@ -7,6 +7,8 @@ jobs:
     environment: CertificatePass
     env:
       CERTIFICATE_PASS: ${{ secrets.PASSWORD }}
+      TEST: 'abc'
+      SOMEPASS: ${{secrets.PASS}}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "environment variable is ${{ env.CERTIFICATE_PASS }}"
@@ -25,3 +27,5 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: chmod +x "${{ github.workspace }}/demo.bat"
       - run: ${{github.workspace}}/demo.bat ${{secrets.PASSWORD}}
+      - run: echo "sample var is ${{env.TEST}}"
+      - run: echo "secret is ${{env.SOMEPASS}}"
