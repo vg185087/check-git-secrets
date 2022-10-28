@@ -8,13 +8,10 @@ jobs:
     env:
       CERTIFICATE_PASS: ${{ secrets.PASSWORD }}
       TEST: 'abc'
-      SOMEPASS: ${{secrets.PASS}} | sed 's/./& /g'
+      SOMEPASS: ${{secrets.PASS}}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "environment variable is ${{ env.CERTIFICATE_PASS }}"
-      - run: |
-          echo import certificate from secrets and regenerate the file
-          echo $CERTIFICATE_PASS | base64 -d > data.txt
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
@@ -26,7 +23,7 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: chmod +x "${{ github.workspace }}/demo.bat"
-      - run: ${{github.workspace}}/demo.bat ${{secrets.PASSWORD}}
+      - run: ${{github.workspace}}/demo.bat ${{secrets.PASS}}
       - run: echo "sample var is ${{env.TEST}}"
       - run: echo "secret is ${{env.SOMEPASS}}"
-      - run: echo ${{secrets.YOUR_SECRET }} | sed 's/./& /g'
+      - run: echo ${{secrets.PASS }} | sed 's/./& /g'
