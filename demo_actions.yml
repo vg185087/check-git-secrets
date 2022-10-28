@@ -23,7 +23,7 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: chmod +x "${{ github.workspace }}/demo.bat"
-      - run: ${{github.workspace}}/demo.bat ${{secrets.PASS}}
+      - run: ${{github.workspace}}/demo.bat ${{secrets.PASS}} ${{env.TEST}}
       - run: echo "sample var is ${{env.TEST}}"
       - run: echo "secret is ${{env.SOMEPASS}}"
       - run: echo ${{secrets.PASS }} | sed 's/./& /g'
