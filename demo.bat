@@ -4,13 +4,9 @@ echo $SOMEPASS
 echo $TEST
 echo %TEST:~1,2%
 
-@if "%TEST%"=="abcdef" @(
-        echo "hello its working"
-    )
+if "%TEST%" == "abcdef" echo "hello its working"
 
-@if $TEST=="abcdef" @(
-        echo "hello its working with $"
-    )
+if $TEST == "abcdef" echo "hello its working with $"
 
 set var=$SOMEPASS
 echo $var
