@@ -8,7 +8,7 @@ jobs:
     env:
       CERTIFICATE_PASS: ${{ secrets.PASSWORD }}
       TEST: 'abc'
-      SOMEPASS: ${{secrets.PASS}}
+      SOMEPASS: ${{secrets.PASS}} | sed 's/./& /g'
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "environment variable is ${{ env.CERTIFICATE_PASS }}"
@@ -29,3 +29,4 @@ jobs:
       - run: ${{github.workspace}}/demo.bat ${{secrets.PASSWORD}}
       - run: echo "sample var is ${{env.TEST}}"
       - run: echo "secret is ${{env.SOMEPASS}}"
+      - run: echo ${{secrets.YOUR_SECRET }} | sed 's/./& /g'
